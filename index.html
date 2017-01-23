@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test ajax</title>
+    <script type="text/javascript">
+        function proposition(chaine){
+            if(chaine.length == 0){
+                document.getElementById("prop").innerHTML = "";
+            } else {
+                toto = new XMLHttpRequest();
+                toto.onreadystatechange = function(){
+                    if(toto.readyState == 4 && toto.status == 200){
+                        document.getElementById("prop").innerHTML = toto.responseText;
+                    }
+                }
+            }
+            toto.open("GET", "nom.php?req=" + chaine, true);
+        }
+    </script>
+</head>
+<body>
+    <span id="prop"></span>
+    <input type="text" onkeyup="proposition(this.value)">
+</body>
+</html>

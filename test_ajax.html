@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test AJAX</title>
+    <script type="text/javascript">
+        function changement(){
+            var obj = new XMLHttpRequest();
+            obj.onreadystatechange = function() {
+                if(obj.readyState == 4 && obj.status == 200){
+                    document.getElementById("test").innerHTML = obj.responseText;
+                }
+            };
+            obj.open("GET", "test_ajax.txt", true);
+            obj.send();
+        }
+    </script>
+</head>
+<body>
+    <div id="test"><h1>Changement de texte avec AJAX</h1></div>
+    <button onclick="changement()">Changement</button>
+</body>
+</html>
